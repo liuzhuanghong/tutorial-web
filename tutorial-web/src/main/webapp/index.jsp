@@ -1,5 +1,28 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
 <html>
-<body>
-<h2>Hello, liuzhuanghong!</h2>
-</body>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Steven</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <h1>你好！Steven Yang!</h1>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> -->
+    <script src="js/3rd/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/3rd/bootstrap/bootstrap.js" charset="GBK"></script>
+  </body>
 </html>
