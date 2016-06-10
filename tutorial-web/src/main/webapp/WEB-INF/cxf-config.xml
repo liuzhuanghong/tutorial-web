@@ -1,9 +1,16 @@
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:soap="http://cxf.apache.org/bindings/soap" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+	http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+	">
+
 	<!-- 上面 1、 http://cxf.apache.org/schemas/jaxws.xsd 2、 http://cxf.apache.org/jaxws 
 		3、http://cxf.apache.org/schemas/jaxws.xsd 为引入 CXF 的命名空间 -->
 
 
-	<!-- 上面3个 import 为导入 CXF 的 Bean 定义文件 -->
 
 
 	<!-- 定义具体实现的 Bean ，这个 Bean 的定义与 Spring 普通的 Bean 定义是一样的 -->
@@ -22,14 +29,23 @@
 	</jaxws:server>
 
 
-	<bean id="userService"
-		class="com.steven.tutorial.web.service.impl.UserServiceImpl" />
+	<bean id="userService" class="com.steven.tutorial.web.service.impl.UserServiceImpl" />
 	<jaxws:server id="userWebService"
-		serviceClass="com.steven.tutorial.web.service.UserService"
-		address="/userService">
+		serviceClass="com.steven.tutorial.web.service.UserService" address="/userService">
 		<jaxws:serviceBean>
 			<ref bean="userService" />
 		</jaxws:serviceBean>
 	</jaxws:server>
 
+
+	<bean id="productService" class="com.steven.tutorial.web.service.impl.ProductServiceImpl" />
+
+	<jaxrs:server address="/productService">
+		<jaxrs:serviceBeans>
+			<ref bean="productService" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
+		</jaxrs:providers>
+	</jaxrs:server>
 </beans>
