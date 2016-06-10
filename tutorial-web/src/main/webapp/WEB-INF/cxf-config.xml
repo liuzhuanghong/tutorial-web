@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:soap="http://cxf.apache.org/bindings/soap" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+	<!-- 上面 1、 http://cxf.apache.org/schemas/jaxws.xsd 2、 http://cxf.apache.org/jaxws 
+		3、http://cxf.apache.org/schemas/jaxws.xsd 为引入 CXF 的命名空间 -->
+
+
+	<!-- 上面3个 import 为导入 CXF 的 Bean 定义文件 -->
+
+
+	<!-- 定义具体实现的 Bean ，这个 Bean 的定义与 Spring 普通的 Bean 定义是一样的 -->
+	<bean id="helloService"
+		class="com.steven.tutorial.web.service.impl.HelloWorldServiceImpl" />
+
+
+	<!-- 通过 CXF 提供的 <jaxws:server> 标签，将定义的 Bean 暴露出去成为 Web Service 服务 -->
+	<!-- serviceClass = 接口类 -->
+	<!-- address = 调用时的URL -->
+	<jaxws:server id="helloWebService"
+		serviceClass="com.steven.tutorial.web.service.HelloWorldService"
+		address="/helloWorld">
+		<!-- 要暴露的 bean 的引用，上面定义的bean id -->
+		<jaxws:serviceBean>
+			<ref bean="helloService" />
+		</jaxws:serviceBean>
+	</jaxws:server>
+
+
+</beans>
