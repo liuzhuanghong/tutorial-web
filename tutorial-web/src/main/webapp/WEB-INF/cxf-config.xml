@@ -9,8 +9,6 @@
 	<!-- 定义具体实现的 Bean ，这个 Bean 的定义与 Spring 普通的 Bean 定义是一样的 -->
 	<bean id="helloService"
 		class="com.steven.tutorial.web.service.impl.HelloWorldServiceImpl" />
-
-
 	<!-- 通过 CXF 提供的 <jaxws:server> 标签，将定义的 Bean 暴露出去成为 Web Service 服务 -->
 	<!-- serviceClass = 接口类 -->
 	<!-- address = 调用时的URL -->
@@ -23,5 +21,15 @@
 		</jaxws:serviceBean>
 	</jaxws:server>
 
+
+	<bean id="userService"
+		class="com.steven.tutorial.web.service.impl.UserServiceImpl" />
+	<jaxws:server id="userWebService"
+		serviceClass="com.steven.tutorial.web.service.UserService"
+		address="/userService">
+		<jaxws:serviceBean>
+			<ref bean="userService" />
+		</jaxws:serviceBean>
+	</jaxws:server>
 
 </beans>
