@@ -17,7 +17,7 @@ import com.steven.tutorial.web.domain.Product;
 
 public interface ProductService {
 	@GET
-    @Path("/products")
+    @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     List<Product> retrieveAllProducts();
 

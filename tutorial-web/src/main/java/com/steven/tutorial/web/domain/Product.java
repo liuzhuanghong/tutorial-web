@@ -50,4 +50,8 @@ public class Product implements Serializable {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
+	public String toString() {
+		return "Product[id = " + this.id + ", name = " + this.name + ", price = " + this.price + "]";
+	}
 }
