@@ -14,6 +14,16 @@ public class Student {
 	private String name;
 	private Date birthDay;
 
+	public Student() {
+	}
+
+	public Student(int id, String name, Date birthDay) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.birthDay = birthDay;
+	}
+
 	public int getId() {
 		return id;
 	}
