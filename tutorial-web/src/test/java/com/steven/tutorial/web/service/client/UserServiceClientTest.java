@@ -6,7 +6,6 @@ import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.junit.Test;
 
 import com.steven.tutorial.web.domain.User;
-import com.steven.tutorial.web.service.HelloWorldService;
 import com.steven.tutorial.web.service.UserService;
 
 public class UserServiceClientTest {
