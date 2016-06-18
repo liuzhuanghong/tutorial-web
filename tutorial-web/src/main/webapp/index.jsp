@@ -68,7 +68,7 @@
 			$
 					.ajax({
 						type : 'get',
-						url : 'http://localhost:8088/tutorial-web/ws/productService/products',
+						url : 'http://localhost:8088/tutorial-web/ws/productService/',
 						dataType : 'json',
 						success : function(data) {
 							var template = $("#product_table_template").html();

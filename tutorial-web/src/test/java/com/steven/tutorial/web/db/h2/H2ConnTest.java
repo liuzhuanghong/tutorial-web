@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import org.h2.tools.Server;
 import org.junit.Test;
 
 public class H2ConnTest {
@@ -19,6 +20,9 @@ public class H2ConnTest {
 	private static final String PASSWORD = "";
 	// 连接H2数据库时使用的驱动类，org.h2.Driver这个类是由H2数据库自己提供的，在H2数据库的jar包中可以找到
 	private static final String DRIVER_CLASS = "org.h2.Driver";
+
+	// H2数据库服务器启动实例
+	private static Server server;
 
 	@Test
 	public void test() {
@@ -41,8 +45,9 @@ public class H2ConnTest {
 		}
 	}
 
-	@Test
+	//@Test
 	public void testTCPConnect() {
+		startServer();
 		try {
 			Class.forName(DRIVER_CLASS);
 			Connection conn = DriverManager.getConnection(TCP_JDBC_URL, USER, PASSWORD);
@@ -59,6 +64,37 @@ public class H2ConnTest {
 			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		stopServer();
+	}
+
+	/**
+	 * 使用org.h2.tools.Server这个类创建一个H2数据库的服务并启动服务，由于没有指定任何参数，
+	 * 那么H2数据库启动时默认占用的端口就是8082
+	 */
+	private static void startServer() {
+		try {
+			System.out.println("正在启动h2数据库...");
+			// 使用org.h2.tools.Server这个类创建一个H2数据库的服务并启动服务，由于没有指定任何参数，那么H2数据库启动时默认占用的端口就是8082
+			server = Server.createTcpServer().start();
+			System.out.println("h2数据库启动成功...");
+
+		} catch (Exception e) {
+			System.out.println("启动h2数据库出错：" + e.toString());
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * 停止H2数据库
+	 */
+	private static void stopServer() {
+		if (server != null) {
+			System.out.println("停止H2数据库");
+			// 停止H2数据库
+			server.stop();
+			server = null;
 		}
 	}
 
