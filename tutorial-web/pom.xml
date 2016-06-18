@@ -18,6 +18,8 @@
 		<activiti.version>5.18.0</activiti.version>
 		<slf4j.version>1.7.6</slf4j.version>
 		<h2.version>1.4.192</h2.version>
+		<struts2-core.version>2.3.16</struts2-core.version>
+		<struts2-spring-plugin.version>2.3.4.1</struts2-spring-plugin.version>
 	</properties>
 
 	<repositories>
@@ -80,6 +82,39 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+		<!-- spring-context包含spring-context, aop, beans, expression, aopalliance -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- spring-core包含spring-core,logging -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Struts2的核心包 -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-core</artifactId>
+			<version>${struts2-core.version}</version>
+		</dependency>
+		<!-- Struts2和Spring整合插件 -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-spring-plugin</artifactId>
+			<version>${struts2-spring-plugin.version}</version>
+		</dependency>
+		
+        <!-- Struts2和Spring整合插件 -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-spring-plugin</artifactId>
+			<version>${struts2-spring-plugin.version}</version>
 		</dependency>
 
 		<dependency>
