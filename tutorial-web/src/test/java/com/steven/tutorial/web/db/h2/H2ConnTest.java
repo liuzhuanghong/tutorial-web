@@ -45,7 +45,7 @@ public class H2ConnTest {
 		}
 	}
 
-	//@Test
+	@Test
 	public void testTCPConnect() {
 		startServer();
 		try {

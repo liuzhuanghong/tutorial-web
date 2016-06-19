@@ -1,9 +1,10 @@
 package com.steven.tutorial.web.action;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import com.steven.tutorial.web.domain.LoginUser;
+import com.steven.tutorial.web.service.LoginUserService;
 
 /**
  * 登录Action
@@ -13,11 +14,16 @@ import org.springframework.stereotype.Controller;
  */
 @Controller("login")
 public class LoginAction {
+	
+    @Autowired
+    private LoginUserService userService;
+	/**
 	private static Map<String, String> userMap = new HashMap<String, String>();
 	static {
 		userMap.put("liu", "123");
 		userMap.put("yang", "456");
 	}
+	*/
 
 	private String username;
 	private String password;
@@ -39,12 +45,15 @@ public class LoginAction {
 	}
 
 	public String authority() {
-		String curpassword = userMap.get(username);
-
-		if (curpassword != null && curpassword.equals(password)) {
-			return "success";
-		}
-
-		return "error";
+        LoginUser user = new LoginUser();
+        user.setUsername(username);
+        user.setPassword(password);
+        
+        if(userService.getUserNum(user) > 0 )
+        {
+            return "success";
+        }
+        
+        return "error";
 	}
 }

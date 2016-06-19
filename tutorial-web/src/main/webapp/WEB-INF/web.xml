@@ -11,7 +11,7 @@
                         首先是增加 Spring 的配置文件加载 Listene -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/cxf-config.xml</param-value>
+        <param-value>classpath:cxf-config.xml,classpath:db-spring.xml</param-value>
     </context-param>
     <!-- Spring ContextLoaderListener -->
     <listener>

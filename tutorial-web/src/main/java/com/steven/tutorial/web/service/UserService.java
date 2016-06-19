@@ -10,7 +10,7 @@ import javax.jws.WebService;
 import com.steven.tutorial.web.domain.User;
 
 /**
- * 用户相关操作
+ * 用户相关操作，仅用于WebService启动的测试
  * @author liuzhuanghong
  *
  */

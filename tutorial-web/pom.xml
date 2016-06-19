@@ -20,6 +20,11 @@
 		<h2.version>1.4.192</h2.version>
 		<struts2-core.version>2.3.16</struts2-core.version>
 		<struts2-spring-plugin.version>2.3.4.1</struts2-spring-plugin.version>
+		<druid.version>1.0.12</druid.version>
+		<mybatis.version>3.2.5</mybatis.version>
+		<mybatis-spring.version>1.2.2</mybatis-spring.version>
+		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
+		<aspectjweaver.version>1.8.5</aspectjweaver.version>
 	</properties>
 
 	<repositories>
@@ -96,6 +101,31 @@
 			<artifactId>spring-core</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<!-- spring与数据库访问集成（非Hibernate） -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- 添加druid连接池包 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${druid.version}</version>
+		</dependency>
+
+		<!-- 添加mybatis的核心包 -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+		<!-- 添加mybatis与Spring整合的核心包 -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis-spring.version}</version>
+		</dependency>
 
 		<!-- Struts2的核心包 -->
 		<dependency>
@@ -109,12 +139,13 @@
 			<artifactId>struts2-spring-plugin</artifactId>
 			<version>${struts2-spring-plugin.version}</version>
 		</dependency>
-		
-        <!-- Struts2和Spring整合插件 -->
+
+		<!-- ===========================spring事务========================== -->
+		<!--添加aspectjweaver包，spring-jdbc已经包含spring-tx -->
 		<dependency>
-			<groupId>org.apache.struts</groupId>
-			<artifactId>struts2-spring-plugin</artifactId>
-			<version>${struts2-spring-plugin.version}</version>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectjweaver.version}</version>
 		</dependency>
 
 		<dependency>
@@ -173,13 +204,14 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.2</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
 				<configuration>
 					<skip>true</skip>
 				</configuration>
