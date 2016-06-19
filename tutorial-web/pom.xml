@@ -179,6 +179,11 @@
 			<artifactId>activiti-engine</artifactId>
 			<version>${activiti.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-spring</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
 		<!-- activiti需要log4j日志 -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
