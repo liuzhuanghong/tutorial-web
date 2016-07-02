@@ -1,6 +1,8 @@
 package com.steven.tutorial.web.service.client;
 
+import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
+import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 import org.junit.Test;
 
 import com.steven.tutorial.web.service.HelloWorldService;
@@ -21,7 +23,17 @@ public class HelloWorldServiceClientTest {
 		String result = helloService.sayHello();
 		Assert.assertEquals(result, "Hello world!");
 		System.out.println("The result is: " + result);
-
+	}
+	
+	@Test
+	public void testSimpleClient(){
+		JaxWsDynamicClientFactory factory = JaxWsDynamicClientFactory.newInstance();
+		Client client = factory.createClient("http://localhost:8088/tutorial-web/ws/helloWorld?wsdl");
+		try {
+			Object[] results = client.invoke("sayHello", "liu");
+			System.out.println("The result is: " + results[0]);
+		} catch (Exception e) {
+		}
 	}
 
 }

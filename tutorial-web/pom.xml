@@ -25,6 +25,7 @@
 		<mybatis-spring.version>1.2.2</mybatis-spring.version>
 		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<aspectjweaver.version>1.8.5</aspectjweaver.version>
+		<shiro.version>1.2.3</shiro.version>
 	</properties>
 
 	<repositories>
@@ -197,6 +198,14 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>${h2.version}</version>
+		</dependency>
+		
+		
+		<!-- Shiro安全框架 -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
 		</dependency>
 
 	</dependencies>
