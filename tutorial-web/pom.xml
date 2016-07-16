@@ -18,6 +18,7 @@
 		<activiti.version>5.18.0</activiti.version>
 		<slf4j.version>1.7.6</slf4j.version>
 		<h2.version>1.4.192</h2.version>
+		<mysql.version>5.1.38</mysql.version>
 		<struts2-core.version>2.3.16</struts2-core.version>
 		<struts2-spring-plugin.version>2.3.4.1</struts2-spring-plugin.version>
 		<druid.version>1.0.12</druid.version>
@@ -114,6 +115,12 @@
 			<artifactId>druid</artifactId>
 			<version>${druid.version}</version>
 		</dependency>
+		
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
 
 		<!-- 添加mybatis的核心包 -->
 		<dependency>
@@ -205,6 +212,11 @@
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
 			<version>${shiro.version}</version>
 		</dependency>
 
