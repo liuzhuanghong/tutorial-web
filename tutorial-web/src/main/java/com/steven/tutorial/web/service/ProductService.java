@@ -33,7 +33,7 @@ public interface ProductService {
     List<Product> retrieveProductsByName(@FormParam("name") String name);
 
     @POST
-    @Path("/product")
+    @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     Product createProduct(Product product);

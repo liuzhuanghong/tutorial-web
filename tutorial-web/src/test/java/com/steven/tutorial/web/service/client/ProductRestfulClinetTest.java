@@ -60,17 +60,20 @@ public class ProductRestfulClinetTest {
 	@Test
 	public void testAddProduct() {
 		System.out.println("测试添加对象");
-//		Product product = new Product(3, "mac pro", 8800);
-//		Gson gson = new Gson();
-//		String strJson = gson.toJson(product);
-//		System.out.println(strJson);
-//		JacksonJsonProvider jsonProvider = new JacksonJsonProvider();
-//		ClientBuilder.newClient().register(jsonProvider).target(PRODUCT_RESTFUL_URL)
-//				.path("/product").request(MediaType.APPLICATION_JSON).post(entity)
+		Product product = new Product(3, "mac pro", 8800);
+		Gson gson = new Gson();
+		String strJson = gson.toJson(product);
+		System.out.println(strJson);
+		WebClient client = WebClient.create(PRODUCT_RESTFUL_URL);
+		client.path("/add").type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON);
+		Product pro = client.post(strJson,Product.class);  
+		System.out.println("测试添加对象成功，新添加的对象名称是：" + pro.getName());
 		
-	       //String url = "http://localhost:8000/CXFWebService/rest/";
-		// WebClient client = WebClient.create(PRODUCT_RESTFUL_URL);
-		// client.path("product").post(strJson);
+//		WebClient client = WebClient.create("http://localhost:8182/hiService/sayHi/hi");
+//		Response r = client.accept("application/json").get();       
+//		MappingJsonFactory factory = new MappingJsonFactory();
+//		JsonParser parser = factory.createJsonParser((InputStream)r.getEntity());
+//		HiModel hiModel= parser.readValueAs(HiModel.class);
 	}
 
 }
