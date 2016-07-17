@@ -28,6 +28,8 @@
 		<aspectjweaver.version>1.8.5</aspectjweaver.version>
 		<shiro.version>1.2.3</shiro.version>
 		<commons-collections4.version>4.0</commons-collections4.version>
+		<dbutils.version>1.6</dbutils.version>
+		<dbcp2.version>2.0.1</dbcp2.version>
 	</properties>
 
 	<repositories>
@@ -227,6 +229,20 @@
 			<artifactId>commons-collections4</artifactId>
 			<version>${commons-collections4.version}</version>
 		</dependency>
+		
+        <!-- Apache Commons DbUtils -->
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>${dbutils.version}</version>
+        </dependency>
+        <!-- Apache DBCP -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>${dbcp2.version}</version>
+        </dependency>
+		
 
 	</dependencies>
 	<build>
