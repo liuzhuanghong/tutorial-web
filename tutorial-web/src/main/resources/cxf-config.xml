@@ -2,18 +2,28 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
 	xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:cxf="http://cxf.apache.org/core"
 	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
 	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
 	http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
-	http://www.springframework.org/schema/context 
-http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 	">
 
 	<!-- 上面 1、 http://cxf.apache.org/schemas/jaxws.xsd 2、 http://cxf.apache.org/jaxws 
 		3、http://cxf.apache.org/schemas/jaxws.xsd 为引入 CXF 的命名空间 -->
+	<bean id="wsAuthHandler" class="com.steven.tutorial.web.action.security.WsAuthHandler" />
 
-
-
+	<bean id="wss4jInInterceptor" class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
+		<constructor-arg>
+			<map>
+				<!-- 用户认证（明文密码） -->
+				<entry key="action" value="UsernameToken" />
+				<entry key="passwordType" value="PasswordText" />
+				<entry key="passwordCallbackRef" value-ref="wsAuthHandler" />
+			</map>
+		</constructor-arg>
+	</bean>
 
 	<!-- 定义具体实现的 Bean ，这个 Bean 的定义与 Spring 普通的 Bean 定义是一样的 -->
 	<bean id="helloService"
@@ -24,10 +34,14 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd
 	<jaxws:server id="helloWebService"
 		serviceClass="com.steven.tutorial.web.service.HelloWorldService"
 		address="/helloWorld">
+		<jaxws:inInterceptors>
+			<ref bean="wss4jInInterceptor" />
+		</jaxws:inInterceptors>
 		<!-- 要暴露的 bean 的引用，上面定义的bean id -->
 		<jaxws:serviceBean>
 			<ref bean="helloService" />
 		</jaxws:serviceBean>
+
 	</jaxws:server>
 
 
@@ -50,6 +64,14 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd
 			<bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
 		</jaxrs:providers>
 	</jaxrs:server>
+	<!-- 首先定义了一个基于 WSS4J 的拦截器（WSS4JInInterceptor），然后通过 <jaxws:inInterceptors> 
+		将其配置到 helloService 上，最后使用了 CXF 提供的 Bus 特性，只需要在 Bus 上配置一个 logging feature，就可以监控每次 
+		WS 请求与响应的日志了。 -->
+	<cxf:bus>
+		<cxf:features>
+			<cxf:logging />
+		</cxf:features>
+	</cxf:bus>
 
 	<context:component-scan base-package="com.steven.tutorial.web.action" />
 	<context:component-scan base-package="com.steven.tutorial.web.service.impl" />
