@@ -30,6 +30,7 @@
 		<commons-collections4.version>4.0</commons-collections4.version>
 		<dbutils.version>1.6</dbutils.version>
 		<dbcp2.version>2.0.1</dbcp2.version>
+		<activemq.version>5.13.4</activemq.version>
 	</properties>
 
 	<repositories>
@@ -248,9 +249,14 @@
 			<artifactId>commons-dbcp2</artifactId>
 			<version>${dbcp2.version}</version>
 		</dependency>
-
-
+		<!-- Apache ActiveMQ -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
+			<version>${activemq.version}</version>
+		</dependency>
 	</dependencies>
+	
 	<build>
 		<finalName>tutorial-web</finalName>
 
