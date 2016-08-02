@@ -28,6 +28,7 @@
 	<constant name="struts.dispatcher.parametersWorkaround" value="false" />
 
 	<include file="strutsLogin.xml" />
+	<include file="strutsFileUpload.xml" />
 
 	<package name="basePackage" extends="struts-default">
 	</package>
