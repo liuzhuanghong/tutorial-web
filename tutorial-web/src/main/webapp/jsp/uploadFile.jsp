@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<h2>&nbsp; 文件上传	</h2>
   	<form action="upload.action" method="post" enctype="multipart/form-data">
-  		上传文件1：<input type="file" name="upload">
+  		上传文件：<input type="file" name="upload">
   		<input type="submit" value="提交">${result}
   	</form>
 </body>

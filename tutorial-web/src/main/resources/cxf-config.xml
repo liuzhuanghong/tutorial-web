@@ -54,6 +54,18 @@
 	</jaxws:server>
 
 
+	<!-- 文件传输WebService -->
+	<bean id="fileTransferService"
+		class="com.steven.tutorial.web.service.impl.FileTransferServiceImpl" />
+	<jaxws:server id="fileTransferWebService"
+		serviceClass="com.steven.tutorial.web.service.FileTransferService"
+		address="/fileTransferService">
+		<jaxws:serviceBean>
+			<ref bean="fileTransferService" />
+		</jaxws:serviceBean>
+	</jaxws:server>
+
+
 	<bean id="productService" class="com.steven.tutorial.web.service.impl.ProductServiceImpl" />
 
 	<jaxrs:server address="/productService">
