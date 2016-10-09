@@ -31,6 +31,8 @@
 		<dbutils.version>1.6</dbutils.version>
 		<dbcp2.version>2.0.1</dbcp2.version>
 		<activemq.version>5.13.4</activemq.version>
+		<spartk.version>2.0.0</spartk.version>
+		<httpclient.version>4.3.5</httpclient.version>
 	</properties>
 
 	<repositories>
@@ -255,8 +257,22 @@
 			<artifactId>activemq-all</artifactId>
 			<version>${activemq.version}</version>
 		</dependency>
+
+		<dependency> <!-- Spark dependency -->
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-core_2.11</artifactId>
+			<version>${spartk.version}</version>
+		</dependency>
+
+		<!-- httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+
 	</dependencies>
-	
+
 	<build>
 		<finalName>tutorial-web</finalName>
 
